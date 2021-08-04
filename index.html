@@ -22,7 +22,8 @@ function preload() {
 }
 function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    ball = game.add.sprite(50, 50, 'ball');
+    ball = game.add.sprite(game.world.width*0.5, game.world.height-25, 'ball');
+    ball.anchor.set(0.5,1);
     paddle = game.add.sprite(game.world.width*0.5, game.world.height-5, 'paddle');
     paddle.anchor.set(0.5,1);
     game.physics.enable(ball, Phaser.Physics.ARCADE);
@@ -34,6 +35,7 @@ function create() {
 }
 function update() {
     game.physics.arcade.collide(ball, paddle);
+    paddle.x = game.input.x || game.world.width*0.5;
 }
 </script>
 </body>
